@@ -1,0 +1,8 @@
+__pycache__/
+venv/
+.DS_Store
+testing.py
+dbsettings.py
+secretKey.py
+line_chat_bot_settings.py
+other_settings.py

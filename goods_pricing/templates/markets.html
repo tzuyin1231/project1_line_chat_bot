@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>比價彼家：美妝日用比價網</title>
+  </head>
+  <body>
+    <p>比價結果已包含促銷活動。</p>
+    <p>比價價格僅供參考，實際價格以各通路為準。</p>
+
+    <table>
+        <tr>
+            <th>通路名稱</th>
+            <th>商品名稱</th>
+            <th>商品價格</th>
+            <th>商品單位</th>
+            <th>每單位價格</th>
+            <th>促銷活動有無</th>
+            <th>更新時間</th>
+            <th>網站連結</th>
+            </tr>
+        {% for market in markets %}
+            <tr>
+                <td> {{market.market_name}} </td>
+                <td> {{market.goods_title}} </td>
+                <td> {{market.goods_price}}元 </td>
+                <td> {{market.goods_num}}片 </td>
+                <td> 一片{{market.unit_price}}元 </td>
+                <td> {{market.sale_activity}} </td>
+                <td> {{market.timestamp}} </td>
+                <td><a href='{{market.goods_url}}'>前往"{{market.market_name}}"進行購物</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <h3>搜尋附近實體店面</h3>
+        {% for google_market in google_markets %}
+            <ul>
+                <li><a href='https://www.google.com.tw/maps/search/{{google_market}}'>搜尋附近"{{google_market}}"</a></li>
+            </ul>
+        {% endfor %}
+    <p><img src="https://qr-official.line.me/sid/M/272fjtlm.png?shortenUrl=true"><a href="https://lin.ee/akVb2TS"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" alt="加入好友" height="36" border="0"></a></p>
+    掃描QRcode或點選按鈕，加入line好友，立即使用更方便的服務
+    </body>
+</html>
