@@ -1,5 +1,0 @@
-
-latitudevalue='25.0480'
-longitudevalue='121.5171'
-uri='https://www.google.com.tw/maps/search/'+'家樂福'+'/@{},{}'.format(latitudevalue,longitudevalue)+',15z/data=!3m1!4b1'
-print(uri)
