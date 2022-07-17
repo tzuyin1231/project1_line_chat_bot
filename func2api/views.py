@@ -45,6 +45,8 @@ def callback(request):
                         func.sendImgmap(event)
                     elif mtext == '@定位':
                         func.quick_action(event)
+                    elif mtext =='text':
+                        func.sendButton(event)
                 if isinstance(event.message, LocationMessage):       
                     # latitudedata = event.message.latitude
                     # longitudedata = event.message.longitude

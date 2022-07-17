@@ -36,10 +36,14 @@ def Location_get(event):  #@查詢附近實體店面
     try:
         latitudevalue = event.message.latitude  #取得經度
         longitudevalue = event.message.longitude #取得緯度        
-        image_url = 'https://i.imgur.com/Q0cGcyx.png'  #圖片位址
+        #image_url = 'https://i.imgur.com/Q0cGcyx.png'  #圖片位址
+        #image_url = 'https://i.imgur.com/Q3ypVTr.jpg'
+        image_url = 'https://i.imgur.com/cResobO.jpg'
         imgwidth = 1040  #原始圖片寛度一定要1040
         imgheight = 300
-        message = ImagemapSendMessage(
+        message = [
+            TextSendMessage("請點選欲查詢的店面"),
+            ImagemapSendMessage(
             base_url=image_url,
             alt_text="選擇搜尋之店面",
             base_size=BaseSize(height=imgheight, width=imgwidth),  #圖片寬及高
@@ -90,7 +94,7 @@ def Location_get(event):  #@查詢附近實體店面
                     )
                 ),
             ]
-        )
+        )]
         line_bot_api.reply_message(event.reply_token, message)
     except:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
@@ -210,7 +214,7 @@ def sendCarousel(event):  #轉盤樣板，前往線上購物網
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/5BpVCwQ.jpg',
+                        #thumbnail_image_url='https://i.imgur.com/5BpVCwQ.jpg',
 						#thumbnail_image_url=baseurl +'momo.jpg'https://i.imgur.com/92DJOwt.jpg,
                         title='點擊下方連結，前往購物',
                         text='第一頁，更多選擇請往右滑',
@@ -227,10 +231,11 @@ def sendCarousel(event):  #轉盤樣板，前往線上購物網
                                 label='yahoo購物中心',
                                 uri='https://tw.buy.yahoo.com'
                             ),
+
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/7kicILj.jpg',
+                        #thumbnail_image_url='https://i.imgur.com/7kicILj.jpg',
                         title='點擊下方連結，前往購物',
                         text='第二頁，更多選擇請往右滑',
                         actions=[
@@ -246,12 +251,13 @@ def sendCarousel(event):  #轉盤樣板，前往線上購物網
                             label='寶雅線上買',
                             uri='https://www.poyabuy.com.tw/'
                             ),
+
                         ]
                     ),
 					CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/8HpZ4Fc.jpg',
+                        #thumbnail_image_url='https://i.imgur.com/8HpZ4Fc.jpg',
                         title='點擊下方連結，前往購物',
-                        text='最後一頁，若無目標網站請見諒',
+                        text='最後一頁',
                         actions=[
                             URITemplateAction(
                             label='carrefour家樂福線上購',
@@ -339,3 +345,37 @@ def sendImgCarousel(event):
                     
                     
                     """
+#未使用
+def sendButton(event):  #按鈕樣版
+    try:
+        message = TemplateSendMessage(
+            alt_text='按鈕樣板',
+            template=ButtonsTemplate(
+			    #thumbnail_image_url='https://i.imgur.com/qaAdBkR.png',
+                #thumbnail_image_url=baseurl +'ology.png',
+
+                title='按鈕樣版示範',  #主標題
+                text='請選擇：',  #副標題
+                actions=[
+                    MessageTemplateAction(  #顯示文字計息
+                        label='文字訊息',
+                        text='@購買飲料'
+                    ),
+                    MessageTemplateAction(  #顯示文字計息
+                        label='文字訊息',
+                        text='@購買飲料'
+                    ),
+                    MessageTemplateAction(  #顯示文字計息
+                        label='文字訊息',
+                        text='@購買飲料'
+                    ),
+                    URITemplateAction(  #開啟網頁
+                        label='連結網頁',
+                        uri='https://www.lccnet.com.tw/commercial/career/33/transfer_gad.asp?med=g003&mpo=37898&gclid=CjwKCAiAi4fwBRBxEiwAEO8_HmclU4DPBg-ZA7GDKANGam5pVjMpzsZXWedFK5SYSdpAtM974-9WghoCFf8QAvD_BwE'
+                    ),
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+    except:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
